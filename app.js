@@ -5,9 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+// Note: If you uncomment the line below, you'll need to create './routes/users.js'
 // var usersRouter = require('./routes/users');
 
 var app = express();
+
+// === CRITICAL CRASH INJECTION ===
+// Intentional failure point to force the application to crash 
+// with exit code -1 immediately after module loading.
+console.error("FATAL: Intentional critical failure detected during application startup. Forcing exit code -1.");
+process.exit(-1);
+// === END CRASH INJECTION ===
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
