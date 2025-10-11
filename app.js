@@ -10,12 +10,20 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-// === CRITICAL CRASH INJECTION ===
-// Intentional failure point to force the application to crash 
-// with exit code -1 immediately after module loading.
-console.error("FATAL: Intentional critical failure detected during application startup. Forcing exit code -1.");
-process.exit(-1);
-// === END CRASH INJECTION ===
+// === DELAYED CRASH INJECTION ===
+const crashDelayMinutes = 5;
+const crashDelayMs = crashDelayMinutes * 60 * 1000; // 5 minutes in milliseconds
+
+console.log(`Application started successfully.`);
+console.log(`ALERT: Process scheduled to crash in ${crashDelayMinutes} minutes with exit code -1.`);
+
+// Set a timeout to deliberately exit the process with code -1 after 5 minutes
+setTimeout(() => {
+  console.error("FATAL: Intentional delayed critical failure reached. Forcing exit code -1.");
+  // Exit the application with the specified non-zero status code
+  process.exit(-1); 
+}, crashDelayMs);
+// === END DELAYED CRASH INJECTION ===
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
