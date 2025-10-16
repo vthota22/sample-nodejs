@@ -12,7 +12,7 @@ var app = express();
 
 // === DELAYED CRASH INJECTION ===
 const crashDelayMinutes = 5;
-const crashDelayMs = crashDelayMinutes * 60 * 1000; // 5 minutes in milliseconds
+const crashDelayMs = 30 * 1000; // 5 minutes in milliseconds
 
 console.log(`Application started successfully.`);
 console.log(`ALERT: Process scheduled to crash in ${crashDelayMinutes} minutes with exit code -1.`);
