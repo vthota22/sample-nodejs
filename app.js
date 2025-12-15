@@ -15,7 +15,7 @@ const crashDelayMinutes = 5;
 const crashDelayMs = 30 * 1000; // 5 minutes in milliseconds
 
 console.log(`Application started successfully.`);
-consol.log(`ALERT: Process scheduled to crash in ${crashDelayMinutes} minutes with exit code -1.`);
+console.log(`ALERT: Process scheduled to crash in ${crashDelayMinutes} minutes with exit code -1.`);
 
 // Set a timeout to deliberately exit the process with code -1 after 5 minutes
 setTimeout(() => {
